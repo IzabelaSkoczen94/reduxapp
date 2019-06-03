@@ -75,19 +75,6 @@ function stories (state = initialStories, action)
 const reducer = combineReducers({movies, actors, stories })
 const store = createStore(reducer, composeWithDevTools())
 
-//kreatory akcji - funkcja ktora opakowuje 
-//obiekt ktory przekazujemy do dispatch 
-
-//stworzenie funkcji 
-// const addActor = item => ({type: 'ADD_ACTORS', item})
-// const reset = () => ({rype: 'RESET_ACTIONS' })
-
-// store.dispatch(addActor('Boguslaw Linda'))
-
-// //1 parametr dajemy obiekt w ktorym przekazujemy rozne funkcje, 
-// const actorsActions = bindActionCreators({add: addActor,  reset}, store.dispatch)
-// actorsActions.add('Jan')
-
 store.dispatch({type: 'ADD_ACTORS', item: 'Boguslaw Linda'})
 const addActor = item => ({type: 'ADD_ACTORS', item})
 store.dispatch(addActor('Borys Szyc'))
