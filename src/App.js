@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, bindActionCreators } from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 const initialMovies = {
@@ -62,7 +62,7 @@ function stories (state = initialStories, action)
     return {
       ...state, list: [...state.list, action.item]
     }
-    case 'RESET_ACTORS':
+    case 'RESET_MOVIES':
       return {
         ...state, list: []
       }
@@ -73,14 +73,32 @@ function stories (state = initialStories, action)
 }
 
 const reducer = combineReducers({movies, actors, stories })
-
 const store = createStore(reducer, composeWithDevTools())
-window.store = store
+
+//kreatory akcji - funkcja ktora opakowuje 
+//obiekt ktory przekazujemy do dispatch 
+
+//stworzenie funkcji 
+// const addActor = item => ({type: 'ADD_ACTORS', item})
+// const reset = () => ({rype: 'RESET_ACTIONS' })
+
+// store.dispatch(addActor('Boguslaw Linda'))
+
+// //1 parametr dajemy obiekt w ktorym przekazujemy rozne funkcje, 
+// const actorsActions = bindActionCreators({add: addActor,  reset}, store.dispatch)
+// actorsActions.add('Jan')
+
+store.dispatch({type: 'ADD_ACTORS', item: 'Boguslaw Linda'})
+const addActor = item => ({type: 'ADD_ACTORS', item})
+store.dispatch(addActor('Borys Szyc'))
+
+const creators = bindActionCreators({addActor}, store.dispatch)
+creators.addActor('Jan Frycz')
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div> 
         Testowanie Redux
       </div>
     );
