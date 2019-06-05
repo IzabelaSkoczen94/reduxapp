@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux';
 
-const MoviesContainer = (props) =>
+
+const MoviesContainer = ({movies}) =>
 <ul>
-    {props.movies.list.map(movie => <li>{movie}</li>)}
+    {movies.list.map(movie => <li>{movie}</li>)}
 </ul>
 
 const mapStateToProps = state => ({

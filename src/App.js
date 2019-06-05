@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import './App.css'
 import MoviesContainer from './app/movies/components/MoviesContainer'
+import MoviesForm from './app/movies/components/MoviesForm'
 
 
 class App extends Component {
@@ -9,6 +9,7 @@ class App extends Component {
       <div> 
         Testowanie Redux
         <MoviesContainer/>
+        <MoviesForm/>
       </div>
     );
   }
